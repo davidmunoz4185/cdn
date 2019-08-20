@@ -13,8 +13,14 @@ pipeline {
     }
     stage('Push Image.'){
       steps {
-          sh 'docker push davidmunoz4185/nginx:1.0.0'
-      }
+            script {
+                docker.withRegistry('https://hub.docker.com', 'docker-id') {
+                    def customImage = docker.build("davidmunoz4185/nginx:1.0.0")
+                    /* Push the container to the custom Registry */
+                    customImage.push()
+                }
+            }
+        }
     }
   }
 }
