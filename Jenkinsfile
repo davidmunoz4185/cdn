@@ -14,7 +14,7 @@ pipeline {
     stage('Push Image.'){
       steps {
             script {
-                docker.withRegistry('https://hub.docker.com', 'docker-id') {
+                docker.withRegistry('https://registry-1.docker.io/v2', 'docker-id') {
                     def customImage = docker.build("davidmunoz4185/nginx:1.0.0")
                     /* Push the container to the custom Registry */
                     customImage.push()
