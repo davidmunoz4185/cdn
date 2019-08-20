@@ -6,9 +6,14 @@ pipeline {
           sh 'tidy -q -e *.html'
       }
     }
-    stage('Build Docker Image.'){
+    stage('Build Image.'){
       steps {
           sh 'docker build -t davidmunoz4185/nginx:1.0.0 .'
+      }
+    }
+    stage('Push Image.'){
+      steps {
+          sh 'docker push davidmunoz4185/nginx:1.0.0 .'
       }
     }
   }
