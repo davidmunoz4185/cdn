@@ -13,7 +13,7 @@ pipeline {
     }
     stage('Push Image.'){
       steps {
-          sh 'docker push davidmunoz4185/nginx:1.0.0 .'
+          sh 'docker push davidmunoz4185/nginx:1.0.0'
       }
     }
   }
